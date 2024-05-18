@@ -8,6 +8,23 @@ function getVideo() {
   });
 }
 
+async function getDM() {
+  const res = await fetch('https://de-api.eco.astro.com.my/dm/api/v1/x8ym736?site=gempak');
+  const response = await res.json();
+
+  return response.response;
+}
+
+async function DMVideo() {
+  const data = await getDM();
+
+  return (
+    <div>
+      DMID: {data.media.id}
+    </div>
+  )
+}
+
 async function VideoPageResult() {
   const videoMessage = await getVideo();
 
@@ -28,6 +45,7 @@ export default async function VideoPage() {
       <Suspense fallback={<div>Loading...</div>}>
         <VideoPageResult />
       </Suspense>
+      <DMVideo />
     </div>
   )
 }
