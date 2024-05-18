@@ -8,8 +8,6 @@ function getVideo() {
   });
 }
 
-export const maxDuration = 15;
-
 async function VideoPageResult() {
   const videoMessage = await getVideo();
 
